@@ -19,7 +19,11 @@ const LoanSummary = () => {
   const fetchLoans = async () => {
     try {
       const data = await get('/user/loans/summary');
-      setLoans(data);
+      setLoans({
+        active: data?.active || [],
+        upcoming: data?.upcoming || [],
+        completed: data?.completed || []
+      });
     } catch (error) {
       console.error('Failed to fetch loans:', error);
     } finally {
