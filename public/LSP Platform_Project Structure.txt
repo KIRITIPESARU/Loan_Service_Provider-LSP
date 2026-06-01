@@ -1,0 +1,341 @@
+public\LSP Platform_Project Structure.txt
+lsp-platform/
+│
+├── frontend/                          # Frontend Application (Web + Admin)
+│   │
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── manifest.json
+│   │   ├── robots.txt
+│   │   └── assets/
+│   │       ├── icons/
+│   │       ├── images/
+│   │       └── fonts/
+│   │
+│   ├── src/
+│   │   │
+│   │   ├── main.jsx
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   │
+│   │   ├── routes/
+│   │   │   ├── index.jsx
+│   │   │   ├── PrivateRoute.jsx
+│   │   │   ├── AdminRoute.jsx
+│   │   │   └── PublicRoute.jsx
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── auth/
+│   │   │   ├── dashboard/
+│   │   │   ├── profile/
+│   │   │   ├── kyc/
+│   │   │   ├── consent/
+│   │   │   ├── loan/
+│   │   │   ├── tracking/
+│   │   │   ├── agreement/
+│   │   │   ├── repayment/
+│   │   │   ├── support/
+│   │   │   ├── settings/
+│   │   │   ├── notifications/
+│   │   │   ├── admin/
+│   │   │   └── error/
+│   │   │
+│   │   ├── components/
+│   │   │   ├── common/
+│   │   │   ├── layout/
+│   │   │   ├── forms/
+│   │   │   ├── charts/
+│   │   │   ├── tables/
+│   │   │   └── modals/
+│   │   │
+│   │   ├── hooks/
+│   │   │   ├── useAuth.js
+│   │   │   ├── useApi.js              # API integration hook
+│   │   │   ├── useQuery.js            # React Query wrapper
+│   │   │   ├── useMutation.js         # Mutations with cache
+│   │   │   ├── useWebSocket.js        # Real-time updates
+│   │   │   ├── usePolling.js          # Status polling
+│   │   │   ├── useDebounce.js         # Search debounce
+│   │   │   ├── useInfiniteScroll.js   # Pagination
+│   │   │   ├── useOfflineQueue.js     # Offline support
+│   │   │   └── useNotification.js     # Push notifications
+│   │   │
+│   │   ├── context/
+│   │   │   ├── AuthContext.jsx
+│   │   │   ├── ThemeContext.jsx
+│   │   │   ├── LanguageContext.jsx
+│   │   │   ├── NotificationContext.jsx
+│   │   │   ├── WebSocketContext.jsx    # Real-time connection
+│   │   │   └── OfflineContext.jsx      # Offline mode
+│   │   │
+│   │   ├── services/                   # INTEGRATION LAYER
+│   │   │   │
+│   │   │   ├── api/
+│   │   │   │   ├── client.js           # Axios instance with interceptors
+│   │   │   │   ├── endpoints.js        # API endpoint constants
+│   │   │   │   ├── auth.js             # Auth API calls
+│   │   │   │   ├── user.js             # User API calls
+│   │   │   │   ├── kyc.js              # KYC API calls
+│   │   │   │   ├── loan.js             # Loan API calls
+│   │   │   │   ├── repayment.js        # Repayment API calls
+│   │   │   │   ├── support.js          # Support API calls
+│   │   │   │   └── admin.js            # Admin API calls
+│   │   │   │
+│   │   │   ├── socket/
+│   │   │   │   ├── socket.js           # Socket.IO client
+│   │   │   │   ├── events.js           # Event handlers
+│   │   │   │   └── reconnect.js        # Auto-reconnect logic
+│   │   │   │
+│   │   │   ├── cache/
+│   │   │   │   ├── queryClient.js      # React Query config
+│   │   │   │   ├── storage.js          # Local storage wrapper
+│   │   │   │   └── sync.js             # Offline sync manager
+│   │   │   │
+│   │   │   └── interceptors/
+│   │   │       ├── auth.js             # Token refresh logic
+│   │   │       ├── error.js            # Global error handler
+│   │   │       ├── loading.js          # Loading state manager
+│   │   │       └── retry.js            # Retry failed requests
+│   │   │
+│   │   ├── store/                       # Redux State Management
+│   │   │   ├── index.js
+│   │   │   ├── slices/
+│   │   │   │   ├── authSlice.js
+│   │   │   │   ├── userSlice.js
+│   │   │   │   ├── kycSlice.js
+│   │   │   │   ├── loanSlice.js
+│   │   │   │   ├── repaymentSlice.js
+│   │   │   │   ├── notificationSlice.js
+│   │   │   │   ├── supportSlice.js
+│   │   │   │   ├── adminSlice.js
+│   │   │   │   └── uiSlice.js          # Loading/Modal states
+│   │   │   │
+│   │   │   └── thunks/                  # Async actions
+│   │   │       ├── authThunks.js
+│   │   │       ├── loanThunks.js
+│   │   │       └── repaymentThunks.js
+│   │   │
+│   │   ├── utils/                       # Frontend Utilities
+│   │   │   ├── constants.js
+│   │   │   ├── helpers.js
+│   │   │   ├── formatters.js
+│   │   │   ├── validators.js
+│   │   │   ├── calculators.js
+│   │   │   │   ├── emiCalculator.js
+│   │   │   │   ├── eligibilityCalculator.js
+│   │   │   │   └── interestCalculator.js
+│   │   │   ├── errorHandler.js
+│   │   │   ├── offlineStorage.js       # IndexedDB wrapper
+│   │   │   └── pushNotifications.js    # FCM integration
+│   │   │
+│   │   ├── hooks/                       (already above)
+│   │   ├── assets/
+│   │   ├── translations/
+│   │   └── config/
+│   │       ├── environment.js
+│   │       ├── apiEndpoints.js
+│   │       ├── appConfig.js
+│   │       └── featureFlags.js
+│   │
+│   ├── .env
+│   ├── .env.example
+│   ├── package.json
+│   ├── vite.config.js
+│   ├── tailwind.config.js
+│   └── index.html
+│
+│
+├── backend/                           # Backend Application
+│   │
+│   ├── src/
+│   │   ├── index.js                   # Entry point
+│   │   ├── app.js                     # Express app setup
+│   │   │
+│   │   ├── controllers/
+│   │   │   ├── authController.js
+│   │   │   ├── userController.js
+│   │   │   ├── kycController.js
+│   │   │   ├── loanController.js
+│   │   │   ├── repaymentController.js
+│   │   │   ├── supportController.js
+│   │   │   └── adminController.js
+│   │   │
+│   │   ├── routes/
+│   │   │   ├── v1/
+│   │   │   │   ├── authRoutes.js
+│   │   │   │   ├── userRoutes.js
+│   │   │   │   ├── kycRoutes.js
+│   │   │   │   ├── loanRoutes.js
+│   │   │   │   ├── repaymentRoutes.js
+│   │   │   │   ├── supportRoutes.js
+│   │   │   │   └── adminRoutes.js
+│   │   │   └── index.js
+│   │   │
+│   │   ├── models/
+│   │   │   ├── User.js
+│   │   │   ├── KYCModel.js
+│   │   │   ├── LoanModel.js
+│   │   │   ├── RepaymentModel.js
+│   │   │   ├── ConsentModel.js
+│   │   │   ├── NotificationModel.js
+│   │   │   ├── SupportTicketModel.js
+│   │   │   └── AdminModel.js
+│   │   │
+│   │   ├── services/
+│   │   │   ├── authService.js
+│   │   │   ├── otpService.js
+│   │   │   ├── jwtService.js
+│   │   │   ├── kycService.js
+│   │   │   │   ├── panVerification.js
+│   │   │   │   ├── aadhaarVerification.js
+│   │   │   │   └── bankVerification.js
+│   │   │   ├── loanService.js
+│   │   │   │   ├── eligibilityEngine.js
+│   │   │   │   ├── emiCalculator.js
+│   │   │   │   └── creditBureauService.js
+│   │   │   ├── repaymentService.js
+│   │   │   ├── notificationService.js
+│   │   │   │   ├── emailService.js
+│   │   │   │   ├── smsService.js
+│   │   │   │   └── pushService.js
+│   │   │   ├── documentService.js
+│   │   │   │   ├── uploadService.js
+│   │   │   │   ├── ocrService.js
+│   │   │   │   └── storageService.js
+│   │   │   ├── eSignService.js
+│   │   │   ├── webhookService.js
+│   │   │   └── reportService.js
+│   │   │
+│   │   ├── middleware/
+│   │   │   ├── authMiddleware.js
+│   │   │   ├── adminMiddleware.js
+│   │   │   ├── validationMiddleware.js
+│   │   │   ├── rateLimiter.js
+│   │   │   ├── logger.js
+│   │   │   ├── errorHandler.js
+│   │   │   └── fileUpload.js
+│   │   │
+│   │   ├── utils/
+│   │   │   ├── constants.js
+│   │   │   ├── helpers.js
+│   │   │   ├── validators.js
+│   │   │   ├── encryption.js
+│   │   │   ├── tokenGenerator.js
+│   │   │   ├── dateUtils.js
+│   │   │   └── logger.js
+│   │   │
+│   │   ├── config/
+│   │   │   ├── database.js
+│   │   │   ├── redis.js
+│   │   │   ├── queue.js
+│   │   │   └── thirdParty.js
+│   │   │
+│   │   ├── jobs/                       # Background jobs
+│   │   │   ├── cron/
+│   │   │   │   ├── emiReminder.js
+│   │   │   │   ├── reportGeneration.js
+│   │   │   │   └── dataBackup.js
+│   │   │   └── queues/
+│   │   │       ├── emailQueue.js
+│   │   │       ├── smsQueue.js
+│   │   │       └── kycQueue.js
+│   │   │
+│   │   ├── webhooks/                   # Third-party webhooks
+│   │   │   ├── lenderWebhook.js
+│   │   │   ├── paymentWebhook.js
+│   │   │   └── eSignWebhook.js
+│   │   │
+│   │   └── sockets/                    # WebSocket handlers
+│   │       ├── index.js
+│   │       ├── notificationHandler.js
+│   │       ├── chatHandler.js
+│   │       └── statusHandler.js
+│   │
+│   ├── .env
+│   ├── .env.example
+│   ├── package.json
+│   ├── server.js
+│   └── Dockerfile
+│
+│
+├── mobile/                             # React Native / Flutter Mobile App
+│   │
+│   ├── src/
+│   │   ├── screens/
+│   │   │   ├── auth/
+│   │   │   ├── dashboard/
+│   │   │   ├── profile/
+│   │   │   ├── loan/
+│   │   │   ├── repayment/
+│   │   │   └── support/
+│   │   │
+│   │   ├── components/
+│   │   ├── navigation/
+│   │   ├── services/
+│   │   │   ├── api/
+│   │   │   ├── storage/
+│   │   │   └── notifications/
+│   │   ├── hooks/
+│   │   ├── utils/
+│   │   └── assets/
+│   │
+│   ├── android/
+│   ├── ios/
+│   ├── package.json
+│   └── App.js
+│
+│
+├── shared/                             # Shared code between frontend/backend
+│   │
+│   ├── types/
+│   │   ├── user.types.js
+│   │   ├── loan.types.js
+│   │   ├── api.types.js
+│   │   └── socket.types.js
+│   │
+│   ├── constants/
+│   │   ├── statusCodes.js
+│   │   ├── loanStatus.js
+│   │   └── errorMessages.js
+│   │
+│   ├── validators/
+│   │   ├── userValidator.js
+│   │   ├── loanValidator.js
+│   │   └── commonValidator.js
+│   │
+│   └── helpers/
+│       ├── formatters.js
+│       └── calculators.js
+│
+│
+├── docker/
+│   ├── frontend.Dockerfile
+│   ├── backend.Dockerfile
+│   ├── mobile.Dockerfile
+│   ├── nginx.conf
+│   └── docker-compose.yml
+│
+│
+├── docs/
+│   ├── api/
+│   │   ├── openapi.yaml
+│   │   └── postman_collection.json
+│   ├── frontend/
+│   │   ├── component-library.md
+│   │   └── integration-guide.md
+│   └── deployment/
+│       └── deploy.md
+│
+│
+├── scripts/
+│   ├── seedDatabase.js
+│   ├── generateMockData.js
+│   └── deploy.sh
+│
+│
+├── .gitignore
+├── .env.example
+├── README.md
+├── LICENSE
+└── package.json                         # Monorepo root (optional)
