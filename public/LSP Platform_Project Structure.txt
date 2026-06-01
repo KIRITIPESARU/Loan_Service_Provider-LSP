@@ -1,3 +1,4 @@
+E:\Git\Loan-Service-Provider\public\LSP Platform_Project Structure.txt
 public\LSP Platform_Project Structure.txt
 lsp-platform/
 │
