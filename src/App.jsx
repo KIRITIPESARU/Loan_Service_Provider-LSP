@@ -1,8 +1,14 @@
+// src/App.jsx
+import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from './store';
+import AppRoutes from './routes';
+
 function App() {
   return (
-    <div>
-      <h1>Loan Service Provider</h1>
-    </div>
+    <Provider store={store}>
+      <AppRoutes />
+    </Provider>
   );
 }
 
