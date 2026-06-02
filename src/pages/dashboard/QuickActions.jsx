@@ -1,84 +1,74 @@
+// src/pages/dashboard/QuickActions.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const QuickActions = () => {
+  const navigate = useNavigate();
+
   const actions = [
-    {
-      title: 'Apply for Loan',
-      icon: '💰',
-      color: 'blue',
-      path: '/apply-loan',
-      description: 'Get instant approval'
+    { 
+      label: "Apply for Loan", 
+      subtitle: "Get instant approval", 
+      icon: "fas fa-hand-holding-usd",
+      bg: "bg-blue-50",
+      hoverBg: "hover:bg-blue-100",
+      onClick: () => navigate('/apply-loan')
     },
-    {
-      title: 'Make Payment',
-      icon: '💳',
-      color: 'green',
-      path: '/repayments',
-      description: 'Pay your EMI'
+    { 
+      label: "Make Payment", 
+      subtitle: "Pay your EMI", 
+      icon: "fas fa-credit-card",
+      bg: "bg-emerald-50",
+      hoverBg: "hover:bg-emerald-100",
+      onClick: () => navigate('/payments')
     },
-    {
-      title: 'Check KYC',
-      icon: '🆔',
-      color: 'purple',
-      path: '/kyc',
-      description: 'Complete verification'
+    { 
+      label: "Check KYC", 
+      subtitle: "Complete verification", 
+      icon: "fas fa-id-card",
+      bg: "bg-purple-50",
+      hoverBg: "hover:bg-purple-100",
+      onClick: () => navigate('/kyc')
     },
-    {
-      title: 'Get Support',
-      icon: '💬',
-      color: 'amber',
-      path: '/support',
-      description: '24/7 assistance'
-    },
-    {
-      title: 'Loan Calculator',
-      icon: '📊',
-      color: 'indigo',
-      path: '/loan-calculator',
-      description: 'Plan your EMI'
-    },
-    {
-      title: 'Credit Score',
-      icon: '📈',
-      color: 'rose',
-      path: '/credit-score',
-      description: 'Check your score'
+    { 
+      label: "Get Support", 
+      subtitle: "24/7 assistance", 
+      icon: "fas fa-headset",
+      bg: "bg-amber-50",
+      hoverBg: "hover:bg-amber-100",
+      onClick: () => navigate('/support')
     }
   ];
 
-  const getColorClasses = (color) => {
-    const map = {
-      blue: 'bg-blue-50 text-blue-600 group-hover:bg-blue-100',
-      green: 'bg-green-50 text-green-600 group-hover:bg-green-100',
-      purple: 'bg-purple-50 text-purple-600 group-hover:bg-purple-100',
-      amber: 'bg-amber-50 text-amber-600 group-hover:bg-amber-100',
-      indigo: 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100',
-      rose: 'bg-rose-50 text-rose-600 group-hover:bg-rose-100',
-    };
-    return map[color] || 'bg-gray-50 text-gray-600 group-hover:bg-gray-100';
-  };
-
   return (
-    <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8">
-      <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-        <span className="w-2 h-6 bg-purple-600 rounded-full inline-block"></span>
-        Quick Actions
-      </h3>
-      <div className="grid grid-cols-2 gap-4">
-        {actions.map((action, index) => (
-          <Link
-            key={index}
-            to={action.path}
-            className="p-5 rounded-2xl border border-gray-100 hover:shadow-md hover:border-gray-200 transition-all duration-300 group flex flex-col items-center text-center bg-white hover:-translate-y-1"
+    <div className="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden sticky top-6">
+      <div className="px-6 py-5 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white">
+        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+          <i className="fas fa-bolt text-amber-500"></i> Quick Actions
+        </h2>
+      </div>
+      
+      <div className="p-5 space-y-3">
+        {actions.map((action, idx) => (
+          <button
+            key={idx}
+            onClick={action.onClick}
+            className={`quick-action-btn w-full flex items-center gap-4 p-3 rounded-xl ${action.bg} ${action.hoverBg} transition-all group`}
           >
-            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-3 transition-colors ${getColorClasses(action.color)}`}>
-              {action.icon}
+            <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center">
+              <i className={`${action.icon} text-slate-700 text-lg`}></i>
             </div>
-            <span className="text-sm font-bold text-gray-900 mb-1">{action.title}</span>
-            <p className="text-xs text-gray-500 font-medium">{action.description}</p>
-          </Link>
+            <div className="flex-1 text-left">
+              <p className="font-semibold text-slate-800">{action.label}</p>
+              <p className="text-xs text-slate-500">{action.subtitle}</p>
+            </div>
+            <i className="fas fa-chevron-right text-slate-400 text-sm group-hover:translate-x-1 transition"></i>
+          </button>
         ))}
+      </div>
+
+      <div className="bg-indigo-50/40 m-4 p-3 rounded-xl text-xs text-indigo-700 flex items-center gap-2">
+        <i className="fas fa-lock text-indigo-500"></i> Secure & encrypted transactions
       </div>
     </div>
   );
