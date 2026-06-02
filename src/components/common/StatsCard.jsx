@@ -1,41 +1,34 @@
 // src/components/common/StatsCard.jsx
 import React from 'react';
 
-const StatsCard = ({ title, value, icon, color = 'blue' }) => {
-  const colorSchemes = {
-    blue: {
-      cardBg: 'from-blue-50 to-white hover:shadow-blue-100/50',
-      iconBg: 'bg-blue-100 text-blue-600',
-      progressBg: 'bg-blue-600'
-    },
-    green: {
-      cardBg: 'from-green-50 to-white hover:shadow-green-100/50',
-      iconBg: 'bg-green-100 text-green-600',
-      progressBg: 'bg-green-600'
-    },
-    orange: {
-      cardBg: 'from-orange-50 to-white hover:shadow-orange-100/50',
-      iconBg: 'bg-orange-100 text-orange-600',
-      progressBg: 'bg-orange-600'
-    },
-    purple: {
-      cardBg: 'from-purple-50 to-white hover:shadow-purple-100/50',
-      iconBg: 'bg-purple-100 text-purple-600',
-      progressBg: 'bg-purple-600'
-    }
-  };
-
-  const activeScheme = colorSchemes[color] || colorSchemes.blue;
-
+const StatsCard = ({ title, value, icon, trend, subtitle, gradient = "from-blue-50 to-blue-100" }) => {
   return (
-    <div className={`bg-gradient-to-br ${activeScheme.cardBg} border border-gray-100 rounded-2xl p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex items-center justify-between`}>
-      <div className="flex-1">
-        <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider">{title}</p>
-        <p className="text-3xl font-extrabold text-gray-800 mt-2 tracking-tight">{value}</p>
+    <div className="bg-white rounded-2xl p-5 shadow-md border border-slate-100 card-hover transition-all">
+      <div className="flex justify-between items-start">
+        <div>
+          <p className="text-slate-500 text-sm font-medium uppercase tracking-wide">
+            {title}
+          </p>
+          <p className="text-3xl md:text-4xl font-bold text-slate-800 mt-2 tracking-tight">
+            {value}
+          </p>
+        </div>
+        <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center`}>
+          {icon}
+        </div>
       </div>
-      <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-2xl shadow-inner ${activeScheme.iconBg}`}>
-        {icon}
-      </div>
+      {(trend || subtitle) && (
+        <div className="mt-3 flex items-center gap-1 text-xs font-medium">
+          {trend && (
+            <span className={trend.isPositive ? 'text-green-600' : 'text-red-600'}>
+              <i className={`fas fa-arrow-${trend.isPositive ? 'up' : 'down'}`}></i> {trend.value}
+            </span>
+          )}
+          {subtitle && (
+            <span className="text-slate-500">{subtitle}</span>
+          )}
+        </div>
+      )}
     </div>
   );
 };
